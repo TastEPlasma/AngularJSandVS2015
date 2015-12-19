@@ -18,10 +18,7 @@
         <input type="submit" value="Search"/>
     </form>
 
-    <div>
-        <h2>{{user.name}}</h2>
-        <img ng-src="{{user.avatar_url}}" title="{{user.name}}" />
-    </div>
+    <div ng-include="'userdetails.html'" ng-show="user"></div>
 </body>
 
 </html>
