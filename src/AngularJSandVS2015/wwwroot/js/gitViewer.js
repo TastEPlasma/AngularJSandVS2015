@@ -3,7 +3,7 @@
 //Alternative assignment of controller to module
 //viewer.controller("MainController", function ($scope, $http) {
 
-var MainController = function($scope, $http) {
+var MainController = function($scope, $http, $interval, $log) {
 
     var onUserComplete = function (response) {
         $scope.user = response.data;
@@ -19,16 +19,34 @@ var MainController = function($scope, $http) {
         $scope.error = "Could not fetch the data";
     };
 
-    //$http.get("https://api.github.com/users/angular")
-    //    .then(onUserComplete, onError);
-
-    $scope.search = function (username) {
-        $http.get("https://api.github.com/users/" + username)
-            .then(onUserComplete, onError);
+    var decrementCountdown = function () {
+        $scope.countdown -= 1;
+        if ($scope.countdown < 1) {
+            $scope.search($scope.username);
+        }
     };
 
+    var countdownInterval = null;
+    var startCountdown = function () {
+        countdownInterval = $interval(decrementCountdown, 1000, $scope.countdown);
+    }
+
+    $scope.search = function (username) {
+        $log.info("Searching for " + username);
+        $http.get("https://api.github.com/users/" + username)
+            .then(onUserComplete, onError);
+        if (countdownInterval) {
+            $interval.cancel(countdownInterval);
+            $scope.countdown = null;
+        }
+    };
+
+    $scope.username = "angular";
     $scope.message = "Github Viewer";
-    $scope.repoSortOrder = "-stargazers_count"
+    $scope.repoSortOrder = "-stargazers_count";
+    $scope.countdown = 5;
+    startCountdown();
 };
 
-viewer.controller("MainController", ["$scope", "$http", MainController]);
+viewer.controller("MainController", ["$scope", "$http", "$interval", "$log", MainController]);
+
