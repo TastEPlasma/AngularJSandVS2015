@@ -4,23 +4,16 @@
 <head>
     <meta charset="utf-8" />
     <script src="js/angular.js"></script>
-    <script src="js/gitViewer.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/MainController.js"></script>
     <script src="js/github.js"></script>
     <title></title>
 </head>
 
-<body ng-controller="MainController">
-    <h1>{{message}}</h1>
-
-    <div>{{error}}</div>
-    
-    {{countdown}}
-    <form name="searchUser" ng-submit="search(username)">
-        <input type="search" required placeholder="Username to find" ng-model="username"/>
-        <input type="submit" value="Search"/>
-    </form>
-
-    <div ng-include="'userdetails.html'" ng-show="user"></div>
+<body>
+    <h1>Github Viewer</h1>
+    <div ng-view></div>
 </body>
 
 </html>

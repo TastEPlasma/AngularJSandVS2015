@@ -1,8 +1,4 @@
-﻿var viewer = angular.module("githubViewer", []);
-
-//Alternative assignment of controller to module
-//viewer.controller("MainController", function ($scope, $http) {
-
+﻿
 var MainController = function (
     $scope, github, $interval, $log, $anchorScroll, $location) {
 
