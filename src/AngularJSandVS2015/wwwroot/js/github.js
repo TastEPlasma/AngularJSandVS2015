@@ -15,10 +15,18 @@ var github = function ($http) {
             });
     };
 
+    var getCollabs = function (user, repo) {
+        return $http.get(INSERT CORRECT URL HERE)
+            .then(function (response) {
+                return response.data;
+            });
+    };
+
 
     return {
         getUser: getUser,
-        getRepos: getRepos
+        getRepos: getRepos,
+        getCollabs: getCollabs
     };
 };
 

@@ -5,6 +5,7 @@
 /// <reference path="js/app.js" />
 /// <reference path="js/github.js" />
 /// <reference path="js/MainController.js" />
+/// <reference path="js/repocontroller.js" />
 /// <reference path="js/site.js" />
 /// <reference path="js/usercontroller.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />

@@ -18,7 +18,7 @@ var MainController = function ($scope, $interval, $location) {
             $interval.cancel(countdownInterval);
             $scope.countdown = null;
         }
-        // Route here
+        $location.path("/user/" + username);
     };
 
     $scope.username = "angular";
