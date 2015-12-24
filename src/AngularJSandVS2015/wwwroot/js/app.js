@@ -10,9 +10,9 @@ app.config(function ($routeProvider) {
             templateUrl: "user.html",
             controller: "UserController"
         })
-        .when("repo/:username/:reponame", {
+        .when("/repo/:username/:reponame", {
             templateUrl: "repo.html",
-            controller: "RepoController"
+            controller: "RepoController",
         })
         .otherwise({ redirectTo: "/main" });
 });

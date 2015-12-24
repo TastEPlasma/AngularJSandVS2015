@@ -15,10 +15,18 @@ var github = function ($http) {
             });
     };
 
-    var getCollabs = function (user, repo) {
-        return $http.get(INSERT CORRECT URL HERE)
+    var getRepoDetails = function (username, reponame) {
+        var repo;
+        var repoUrl = "https://api.github.com/repos/" + username + "/" + reponame;
+
+        return $http.get(repoUrl)
             .then(function (response) {
-                return response.data;
+                repo = response.data;
+                return $http.get(repoUrl + "/contributors");
+            })
+            .then(function (response) {
+                repo.contributors = response.data;
+                return repo;
             });
     };
 
@@ -26,7 +34,7 @@ var github = function ($http) {
     return {
         getUser: getUser,
         getRepos: getRepos,
-        getCollabs: getCollabs
+        getRepoDetails: getRepoDetails
     };
 };
 

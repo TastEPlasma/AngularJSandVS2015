@@ -1,5 +1,5 @@
 ﻿
-var UserController = function ($scope, github, $routeParams) {
+var UserController = function ($scope, github, $routeParams, $location) {
 
     var onUserComplete = function (data) {
         $scope.user = data;
@@ -19,5 +19,5 @@ var UserController = function ($scope, github, $routeParams) {
     github.getUser($scope.username).then(onUserComplete, onError);
 };
 
-app.controller("UserController", ["$scope", "github", "$routeParams", UserController]);
+app.controller("UserController", ["$scope", "github", "$routeParams", "$location", UserController]);
 

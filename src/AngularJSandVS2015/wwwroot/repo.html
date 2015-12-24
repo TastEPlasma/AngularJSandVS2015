@@ -1,10 +1,16 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿<h2>{{repo.name}}</h2>
 
-</body>
-</html>
+<div>
+    Issues: {{repo.open_issues_count}}
+</div>
+
+<div>
+    <ul>
+        <li ng-repeat="user in repo.contributors">
+            <img src="http://www.gravatar.com/avatar/{{user.gravatar_id}}" alt="{{user.login}}" />
+            {{user.login}}
+        </li>
+    </ul>
+</div>
+<a href="#/main">Back to Search</a>
+<a href="#/user/{{repo.owner.login}}">Back to {{repo.owner.login}}</a>
