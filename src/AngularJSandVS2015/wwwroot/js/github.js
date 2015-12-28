@@ -25,7 +25,7 @@ var github = function ($http) {
                 return $http.get(repoUrl + "/contributors");
             })
             .then(function (response) {
-                repo.contributors = response.data;
+                repo.collaborators = response.data;
                 return repo;
             });
     };
